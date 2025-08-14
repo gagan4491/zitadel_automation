@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import requests, json, configparser, sys
 
-TARGET_CLIENT_ID = "301926079046713354"  # compare as string
+TARGET_CLIENT_ID = "301926079046713354"
 
 cfg = configparser.ConfigParser()
 cfg.read("zitadel.conf")

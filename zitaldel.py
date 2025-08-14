@@ -12,8 +12,8 @@ ORG_ID = os.getenv("ZITADEL_ORG_ID", "301926074198032394")
 PAGE_SIZE = 100
 OUT = "zitadel_new_secrets.csv"
 
-if ACCESS_TOKEN == "REPLACE_ME" or not ACCESS_TOKEN.strip():
-    sys.exit("ERROR: Provide a valid ZITADEL_ACCESS_TOKEN.")
+# if ACCESS_TOKEN == "REPLACE_ME" or not ACCESS_TOKEN.strip():
+#     sys.exit("ERROR: Provide a valid ZITADEL_ACCESS_TOKEN.")
 
 def session_with_headers() -> requests.Session:
     session = requests.Session()
