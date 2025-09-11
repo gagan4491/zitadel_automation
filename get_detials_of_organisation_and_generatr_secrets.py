@@ -359,24 +359,26 @@ def main():
             })
 
     # 3) Output CSV + screen
-    fieldnames = ["scope","project_id","project_name","resource_id","name","type","client_id","new_secret_if_target"]
+    fieldnames = ["scope", "project_id", "project_name", "resource_id", "name", "type", "client_id",
+                  "new_secret_if_target"]
 
+    # Write CSV (kept as-is)
     with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()
         for r in rows:
             w.writerow(r)
 
-    print(",".join(fieldnames))
+    # Print ONLY name and secret for items that actually got a new secret
+    # (skip errors/empty secrets)
     for r in rows:
-        print(",".join((r.get(k,"") or "").replace("\n"," ").replace(","," ") for k in fieldnames))
+        secret = (r.get("new_secret_if_target") or "").strip()
+        if secret and not secret.startswith("ERROR"):
+            # prefer a readable name; fall back to client_id or resource_id
+            name = (r.get("name") or r.get("client_id") or r.get("resource_id") or "").strip()
+            # print exactly: name,secret
+            print(f"{name},{secret}")
 
-    # if rotated_any:
-    #     print("\nRotated secrets for targets:", ", ".join([f"{k}:{v}" for k,v in rotated_targets]))
-    # else:
-    #     print("\nNo secret rotated (targets not found or insufficient permissions).")
-
-    print(f"\noutput file :  {OUTPUT_CSV}")
 
 if __name__ == "__main__":
     try:

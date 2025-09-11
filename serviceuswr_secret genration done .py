@@ -1,7 +1,7 @@
 import requests, json
 
-DOMAIN = "https://app241dev-zitadel.int.capoptix.com"
-ACCESS_TOKEN = "7wl7afoRxv7ltT1tADlCU_WYAp9S-1gzYBfSU9PzyGiylEazX0rGZa8HxSQRdOt8hCqTdZI"            # must have user.write on the user's org
+DOMAIN = "https://app248dev-zitadel.int.capoptix.com"
+ACCESS_TOKEN = "NIJmsMJlrMy8HHNPZAVJyndbdwq3ifpO8rTJI4bOczi0cqlMk5pT0ZXAjKeUerDi"            # must have user.write on the user's org
 ORG_ID_HINT = "301926074198032394"  # what you're currently using; we’ll override with resourceOwner
 USER_ID = "304678892734545930"
 TIMEOUT = 30
